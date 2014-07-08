@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<meta charset="utf-8">
+  	<title>Planetary Annihilation DB Alternative</title>
+    <script src="bower_components/platform/platform.js"></script>
+    <link rel="import" href="bower_components/core-ajax/core-ajax.html">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <core-ajax url="http://example.com/json"
+               handleAs="json"></core-ajax>
+
+    <script>
+      window.addEventListener('polymer-ready', function(e) {
+        var ajax = document.querySelector('core-ajax');
+        ajax.addEventListener('core-response', function(e) {
+          console.log(this.response);
+        });
+
+        ajax.go();
+      });
+    </script>
+  </body>
+</html>

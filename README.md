@@ -12,6 +12,7 @@ through a local web app.
 
 - Python >= 3.2
 - A copy of [Planetary Annihilation](http://www.uberent.com/pa/)
+- Nodejs >= v0.10.28
 
 ## Installation ##
 
