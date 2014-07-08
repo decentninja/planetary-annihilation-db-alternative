@@ -1,5 +1,7 @@
-Planetary Annihilation Unit Database
-====================================
+Planetary Annihilation Unit Database Alterative
+===============================================
+
+Forked from speth/planetary-annihilation-db for alternative gui and features. I wanted to play around with Web components, add a few features and make it more usable on mobile. Lets see what that takes ous.
 
 This is a set of tools for accessing information about the units in Planetary
 Annihilation. It works by parsing the JSON unit descriptions from the
@@ -23,42 +25,3 @@ through a local web app.
       "pa_root": "C:/Path/To/PlanetaryAnnihilation/PA/media"
   }
   ```
-
-## Usage ##
-
-### Web Interface ###
-
-From a command prompt in the directory containing `units.py`, run:
-
-```
-python webunits.py
-```
-
-Then, point your web browser to `http://localhost:8080/` .
-
-The first time you run `webunits.py`, it will automatically download a copy of
-[Bottle](http://bottlepy.org/). If this fails for some reason, you can
-download `bottle.py` from https://github.com/defnull/bottle and place it in
-the same directory as `webunits.py`.
-
-### Shell Usage
-
-From a Python prompt ([IPython](http://ipython.org/install.html) *highly*
-recommended) in the directory containing `units.py`:
-
-```python
->>> from units import *
->>> load_units()
-```
-
-To get the list of units:
-
-```python
->>> sorted(units.keys())
-```
-
-To get information about a particular unit:
-
-```python
->>> units['Vehicle Factory']()
-```
