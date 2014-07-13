@@ -1,25 +1,72 @@
 <!DOCTYPE html>
 <html>
-  <head>
-  	<meta charset="utf-8">
-  	<title>Planetary Annihilation DB Alternative</title>
-    <script src="bower_components/platform/platform.js"></script>
-    <link rel="import" href="bower_components/core-ajax/core-ajax.html">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <body>
-    <core-ajax url="http://example.com/json"
-               handleAs="json"></core-ajax>
+	<head>
+		<meta charset="utf-8">
+		<title>Planetary Annihilation DB Alternative</title>
+		<script src="bower_components/platform/platform.js"></script>
+		<link rel="import" href="bower_components/polymer/polymer.html">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="bower_components/normalize.css/normalize.css">
+		<link href="../bower_components/polymer/polymer.html" rel="import">
+		<link href="../bower_components/core-icons/core-icons.html" rel="import">
+		<link href="../bower_components/paper-fab/paper-fab.html" rel="import">
+		<link href="../bower_components/core-pages/core-pages.html" rel="import">
 
-    <script>
-      window.addEventListener('polymer-ready', function(e) {
-        var ajax = document.querySelector('core-ajax');
-        ajax.addEventListener('core-response', function(e) {
-          console.log(this.response);
-        });
-
-        ajax.go();
-      });
-    </script>
-  </body>
+		<link href="elements/hash-router.html" rel="import">
+	</head>
+	<body>
+		<polymer-element name="index-page">
+			<template>
+				<style>
+					.main {
+						background-color: #101619;
+						background-image: url('http://www.uberent.com/pa/wp-content/uploads/sites/2/2014/03/background.jpg');
+						background-repeat: no-repeat;
+						background-position: top center;
+						background-attachment: fixed;
+						height: 100vh;
+					}
+					.menu {
+						background-color: green;
+						border-radius: 3px 3px 0 0;
+						padding: 0 30px 0 30px;
+						height: 50px;
+					}
+					.menu paper-fab {
+						top: -28px;
+						margin-left: 12px;
+						margin-right: 12px;
+					}
+				</style>
+				<div class="main" vertical layout>
+					<div flex>
+						<hash-router selected="{{page}}"></hash-router>
+						<core-pages selected="{{page}}">
+							<div>One</div>
+							<div>Two</div>
+							<div>Three</div>
+						</core-pages>
+					</div>
+					<div horizontal center-justified layout>
+						<div class="menu" horizontal layout>
+							<a href="/#0">
+								<paper-fab icon="settings" z="5"></paper-fab>
+							</a>
+							<a href="/#1">
+								<paper-fab icon="search" z="5"></paper-fab>
+							</a>
+						</div>
+					</div>
+				</div>
+			</template>
+			<script>
+				Polymer('index-page', {
+					ready: function() {
+						this.page = "0"
+					}
+				})
+			</script>
+		</polymer-element>
+		<index-page></index-page>
+	</body>
 </html>
