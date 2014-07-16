@@ -7,12 +7,11 @@
 		<link rel="import" href="bower_components/polymer/polymer.html">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="bower_components/normalize.css/normalize.css">
-		<link href="../bower_components/polymer/polymer.html" rel="import">
-		<link href="../bower_components/core-icons/core-icons.html" rel="import">
-		<link href="../bower_components/paper-fab/paper-fab.html" rel="import">
-		<link href="../bower_components/core-pages/core-pages.html" rel="import">
-
-		<link href="elements/hash-router.html" rel="import">
+		<link href="bower_components/polymer/polymer.html" rel="import">
+		<link href="bower_components/core-icons/core-icons.html" rel="import">
+		<link href="bower_components/paper-fab/paper-fab.html" rel="import">
+		<link href="bower_components/core-pages/core-pages.html" rel="import">
+		<link href="bower_components/url-route/url-route.html" rel="import">
 	</head>
 	<body>
 		<polymer-element name="index-page">
@@ -40,19 +39,19 @@
 				</style>
 				<div class="main" vertical layout>
 					<div flex>
-						<hash-router selected="{{page}}"></hash-router>
-						<core-pages selected="{{page}}">
-							<div>One</div>
-							<div>Two</div>
-							<div>Three</div>
-						</core-pages>
+						<url-route pattern="/">
+							<h1>Index</h1>
+						</url-route>
+						<url-route pattern="/#info">
+							<h3>blub</h3>
+						</url-route>
 					</div>
 					<div horizontal center-justified layout>
 						<div class="menu" horizontal layout>
-							<a href="/#0">
+							<a href="/#">
 								<paper-fab icon="settings" z="5"></paper-fab>
 							</a>
-							<a href="/#1">
+							<a href="/#info">
 								<paper-fab icon="search" z="5"></paper-fab>
 							</a>
 						</div>
@@ -61,9 +60,6 @@
 			</template>
 			<script>
 				Polymer('index-page', {
-					ready: function() {
-						this.page = "0"
-					}
 				})
 			</script>
 		</polymer-element>
