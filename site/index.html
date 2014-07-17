@@ -8,58 +8,87 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="bower_components/normalize.css/normalize.css">
 		<link href="bower_components/polymer/polymer.html" rel="import">
-		<link href="bower_components/core-icons/core-icons.html" rel="import">
-		<link href="bower_components/paper-fab/paper-fab.html" rel="import">
-		<link href="bower_components/core-pages/core-pages.html" rel="import">
 		<link href="bower_components/url-route/url-route.html" rel="import">
+		<link href="bower_components/core-header-panel/core-header-panel.html" rel="import">
+		<link href="bower_components/core-toolbar/core-toolbar.html" rel="import">
+		<link href="bower_components/core-menu/core-menu.html" rel="import">
+		<link href="bower_components/core-menu/core-submenu.html" rel="import">
+		<link href="bower_components/core-drawer-panel/core-drawer-panel.html" rel="import">
+		<link href="bower_components/core-icons/core-icons.html" rel="import">
+		<link href="bower_components/paper-icon-button/paper-icon-button.html" rel="import">
+		<link href="bower_components/paper-icon-button/paper-icon-button.html" rel="import">
 	</head>
 	<body>
 		<polymer-element name="index-page">
 			<template>
 				<style>
-					.main {
-						background-color: #101619;
+					#sidebar {
+						color: #52c4fb;
+						background-color: #091e25;
 						background-image: url('http://www.uberent.com/pa/wp-content/uploads/sites/2/2014/03/background.jpg');
-						background-repeat: no-repeat;
-						background-position: top center;
-						background-attachment: fixed;
-						height: 100vh;
 					}
-					.menu {
-						background-color: green;
-						border-radius: 3px 3px 0 0;
-						padding: 0 30px 0 30px;
-						height: 50px;
+					#mainheader {
+						color: #fdfdfb;
+						background-image: url("http://assets1.ignimgs.com/vid/thumbnails/user/2014/02/19/20823568_planetary-annihilation.jpg");
+						background-position: bottom;
 					}
-					.menu paper-fab {
-						top: -28px;
-						margin-left: 12px;
-						margin-right: 12px;
+					#mainheader > h1 {
+						position: absolute;
+						bottom: 13px;
+					}
+					#mainheader paper-icon-button {
+						fill: #fdfdfb;
+					}
+					#main::shadow #mainContainer {
+						color: #091e25;
+						background-color: #fdfdfb;
+					}
+					core-drawer-panel:not([narrow]) #navicon {
+						display: none;
 					}
 				</style>
-				<div class="main" vertical layout>
-					<div flex>
-						<url-route pattern="/">
-							<h1>Index</h1>
-						</url-route>
-						<url-route pattern="/#info">
-							<h3>blub</h3>
-						</url-route>
-					</div>
-					<div horizontal center-justified layout>
-						<div class="menu" horizontal layout>
-							<a href="/#">
-								<paper-fab icon="settings" z="5"></paper-fab>
-							</a>
-							<a href="/#info">
-								<paper-fab icon="search" z="5"></paper-fab>
-							</a>
-						</div>
-					</div>
-				</div>
+
+				<core-drawer-panel>
+					<core-header-panel id="sidebar" drawer mode="seamed">
+						<core-toolbar>
+							<span>Planetary Annihilation Unit DB Edge</span>
+						</core-toolbar>
+						<core-menu>
+							<core-item label="Home"></core-item>
+							<core-submenu label="Units">
+								<core-item label="Buildings"></core-item>
+								<core-item label="Combat"></core-item>
+								<core-item label="Fabricators"></core-item>
+								<core-item label="Factories"></core-item>
+								<core-item label="Resources"></core-item>
+							</core-submenu>
+						</core-menu>
+					</core-header-panel>
+					<core-header-panel id="main" main mode="waterfall-tall">
+						<core-toolbar id="mainheader">
+							<paper-icon-button id="navicon" icon="menu" onclick="toggleMenu()"></paper-icon-button>
+							<h1>Title</h1>
+						</core-toolbar>
+						<article>
+							<url-route pattern="/">
+					 			<template>
+									<h1>Index</h1>
+								</template>
+							</url-route>
+							<url-route pattern="/#info">
+								<template>
+									<h3>blub</h3>
+								</template>
+							</url-route>
+						</article>
+					</core-header-panel>
+				</core-drawer-panel>
 			</template>
 			<script>
 				Polymer('index-page', {
+					toggleMenu: function() {
+						console.log("bla")
+					}
 				})
 			</script>
 		</polymer-element>
